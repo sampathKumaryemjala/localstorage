@@ -1,0 +1,80 @@
+﻿<h2>Sign Up</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- username -->
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" class="form-control" placeholder="User Name"
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+    </div>
+    <!-- name -->
+    <div class="form-group">
+        <label for="fname">Name</label>
+        <input type="text" formControlName="fname" class="form-control" placeholder="Name"
+            [ngClass]="{ 'is-invalid': submitted && f.fname.errors }" />
+        <div *ngIf="submitted && f.fname.errors" class="invalid-feedback">
+            <div *ngIf="f.fname.errors.required">Name is required</div>
+        </div>
+    </div>
+    <!-- email -->
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" class="form-control" placeholder="Email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+    </div>
+    <!-- password -->
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+            <div *ngIf="f.password.errors.pattern"> Must contain at least one number and one uppercase and lowercase letter</div>
+        </div>
+    </div>
+    <!-- confirm password -->
+    <div class="form-group">
+        <label for="confirmpassword">Confirm Password</label>
+        <input type="password" formControlName="confirmpassword" class="form-control" placeholder="Confirm Password"
+            [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" />
+        <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
+            <div *ngIf="f.confirmpassword.errors.required">Confirm Password is required</div>
+            <div *ngIf="f.confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
+            
+        </div>
+    </div>
+    <!-- mobile Number -->
+
+    <div class="form-group">
+        <label for="mobilenumber">Mobile Number</label>
+        <input type="text" formControlName="mobilenumber" class="form-control" placeholder="Mobile Number"
+            [ngClass]="{ 'is-invalid': submitted && f.mobilenumber.errors }" />
+        <div *ngIf="submitted && f.mobilenumber.errors" class="invalid-feedback">
+            <div *ngIf="f.mobilenumber.errors.required">Mobile Number is required</div>
+            <div *ngIf="f.mobilenumber.errors.minlength">mobile Number must be at least 10 characters</div>
+        </div>
+    </div>
+    <!-- address -->
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" formControlName="address" class="form-control" placeholder="Address"
+            [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+            <div *ngIf="f.address.errors.required">Address is required</div>
+            <div *ngIf="f.address.errors.maxlength">Address must be lessthan 30 characters</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Register</button>
+        <img *ngIf="loading"
+            src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    </div>
+</form>

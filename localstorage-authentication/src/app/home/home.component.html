@@ -1,0 +1,14 @@
+﻿<h4>Welcome to dashboard: {{currentUser.username}}!</h4>
+
+
+<ul>
+    <li *ngFor="let user of users">
+        {{user.username}} - email= ({{user.email}} , mobile= {{user.mobilenumber}})
+        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </li>
+</ul>
+
+<h3>All registered are above</h3>
+<p><a [routerLink]="['/login']">Logout</a></p>
+
+
